@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/srm_13</color>
+    <color name="colorPrimaryDark">@color/srm_24</color>
+    <color name="colorAccent">@color/srm_4</color>
+
+    <!--  Color based on Standard Reference Method (SRM) 를 출처로 하는 맥주색. 일부안 가져옴. -->
+    <color name="bubble">#FFFFFF</color>
+    <color name="srm_2">#F8F753</color>
+    <color name="srm_3">#F8F753</color>
+    <color name="srm_4">#ECE61A</color>
+    <color name="srm_6">#D5BC26</color>
+    <color name="srm_8">#BF923B</color>
+    <color name="srm_10">#BF813A</color>
+    <color name="srm_13">#BC6733</color>
+    <color name="srm_17">#8D4C32</color>
+    <color name="srm_20">#5D341A</color>
+    <color name="srm_24">#261716</color>
+    <color name="srm_29">#0F0B0A</color>
+    <color name="srm_35">#080707</color>
+    <color name="srm_40_over">#030403</color>
+
 </resources>
