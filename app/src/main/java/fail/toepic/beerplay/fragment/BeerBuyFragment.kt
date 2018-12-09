@@ -1,5 +1,6 @@
 package fail.toepic.beerplay.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import fail.toepic.beerplay.R
+import fail.toepic.beerplay.*
 import fail.toepic.beerplay.util.MoveTo
 import kotlinx.android.synthetic.main.fragment_beer_buy.*
 
-class BeerBuyFragment : Fragment(){
+class BeerBuyFragment : Fragment() {
 
     companion object {
         val BUY_ID = "buy_id"
@@ -28,14 +29,20 @@ class BeerBuyFragment : Fragment(){
 
         Log.d("dlwlrma","BUY ID : "+butID)
 
-
-
         return inflater.inflate(R.layout.fragment_beer_buy, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         test.setOnClickListener {doBuyConfirm(it,"Dummy")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val activity = requireActivity()
+        if ( activity is TitleChangeable) {
+            activity.changeTitle("Bear Bey Confirm")
         }
     }
 

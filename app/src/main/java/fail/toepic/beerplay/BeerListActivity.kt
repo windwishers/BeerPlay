@@ -2,21 +2,26 @@ package fail.toepic.beerplay
 
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import fail.toepic.beerplay.connectivity.PunkApi
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import com.google.gson.Gson
-import fail.toepic.beerplay.model.Beer
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposables
 
 
-class BeerListActivity : AppCompatActivity() {
+class BeerListActivity : AppCompatActivity() , TitleChangeable {
+
+    override fun changeTitle(title: String) {
+
+    }
 
     val compositeDisposable : CompositeDisposable = CompositeDisposable()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,3 +49,4 @@ class BeerListActivity : AppCompatActivity() {
         compositeDisposable.dispose()
     }
 }
+

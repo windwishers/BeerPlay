@@ -1,17 +1,22 @@
 package fail.toepic.beerplay.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import fail.toepic.beerplay.BeerPlayActivity
 
 import fail.toepic.beerplay.R
+import fail.toepic.beerplay.TitleChangeable
 import fail.toepic.beerplay.util.MoveTo
+import kotlinx.android.synthetic.main.fragment_beer_list.*
 import kotlinx.android.synthetic.main.fragment_beer_list.view.*
 
 
@@ -40,9 +45,19 @@ class BeerListFragment : Fragment(){
         super.onActivityCreated(savedInstanceState)
 
         beyUser?.let {
-            Log.d("dlwlrma","BuyUser "+it)
+
+            Toast.makeText(requireActivity(),"beer buy by $it",Toast.LENGTH_SHORT).show()
+
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val activity = requireActivity()
+        if ( activity is TitleChangeable) {
+            activity.changeTitle("Bear LIst")
+        }
     }
 
 }
