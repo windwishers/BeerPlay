@@ -15,7 +15,7 @@
         <argument android:name="buy_user" app:argType="string" app:nullable="true"/>
         <action
                 android:id="@+id/action_show_detail"
-                app:destination="@id/beer_detail"
+                app:destination="@id/beerDetail"
                 app:enterAnim="@anim/nav_default_enter_anim"
                 app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -25,7 +25,7 @@
 
 
     <fragment
-            android:id="@+id/beer_detail"
+            android:id="@+id/beerDetail"
             android:name="fail.toepic.beerplay.fragment.BeerDetailFragment"
             android:label="fragment_beer_detail"
             tools:layout="@layout/fragment_beer_detail">

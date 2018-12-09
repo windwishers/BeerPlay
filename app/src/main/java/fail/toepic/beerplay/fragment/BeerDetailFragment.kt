@@ -1,12 +1,13 @@
 package fail.toepic.beerplay.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import fail.toepic.beerplay.R
 import fail.toepic.beerplay.TitleChangeable
 import fail.toepic.beerplay.util.MoveTo
@@ -22,7 +23,9 @@ class BeerDetailFragment : Fragment(){
         get() = arguments?.getString(BEER_ID)?:""
 
     val doBuy : (View,String)->Unit =  { v,id->
-        MoveTo(R.id.action_beer_buy,v, bundleOf(BeerBuyFragment.BUY_ID to id))
+        val option = NavOptions.Builder()
+            .setPopUpTo(R.id.beerDetail,true).build()
+        Navigation.findNavController(v).navigate(R.id.action_beer_buy, bundleOf(BeerBuyFragment.BUY_ID to id),option)
     }
 
 

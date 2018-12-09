@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import fail.toepic.beerplay.BeerPlayActivity
 
@@ -30,7 +31,8 @@ class BeerListFragment : Fragment(){
         get() = arguments?.getString(BUY_USER)
 
     val doShowDetail : (View, String)->Unit =  { v, id->
-        this.MoveTo(R.id.action_show_detail,v,bundleOf(BeerDetailFragment.BEER_ID to id))
+
+        Navigation.findNavController(v).navigate(R.id.action_show_detail, bundleOf(BeerDetailFragment.BEER_ID to id))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -59,6 +61,8 @@ class BeerListFragment : Fragment(){
             activity.changeTitle("Bear LIst")
         }
     }
+
+
 
 }
 

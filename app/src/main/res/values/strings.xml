@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BeerPlay</string>
+    <string name="title_buy_fragment">구매 확인</string>
+    <string name="buyer_label">구매자</string>
+    <string name="buy_confirm">구매</string>
+    <string name="check_name">구매자 이름을 입력 하세요</string>
 </resources>
