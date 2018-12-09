@@ -1,8 +1,9 @@
 package fail.toepic.beerplay
 
-import android.support.v7.app.AppCompatActivity
+
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import fail.toepic.beerplay.connectivity.PunkApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
@@ -21,7 +22,7 @@ class BeerListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_beer_list)
 
-        reloadList()
+//        reloadList()
 
     }
 
