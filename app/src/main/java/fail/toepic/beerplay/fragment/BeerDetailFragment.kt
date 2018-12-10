@@ -249,3 +249,35 @@ class BeerDetailFragment : Fragment(){
     }
 
 }
+
+fun Float.getBeerColorID() : Int{
+    val srm = this
+    if(srm > 40){
+        return R.color.srm_40_over
+    }else if(srm >= 35){
+        return R.color.srm_35
+    }else if(srm >= 29){
+        return R.color.srm_29
+    }else if(srm >= 24){
+        return R.color.srm_24
+    }else if(srm >= 20){
+        return R.color.srm_20
+    }else if(srm >= 17){
+        return R.color.srm_17
+    }else if(srm >= 13){
+        return R.color.srm_13
+    }else if(srm >= 10){
+        return R.color.srm_10
+    }else if(srm >= 8){
+        return R.color.srm_8
+    }else if(srm >= 6){
+        return R.color.srm_6
+    }else if(srm >= 4){
+        return R.color.srm_4
+    }else if(srm >= 3){
+        return R.color.srm_3
+    }else {
+        return R.color.srm_2
+    }
+
+}

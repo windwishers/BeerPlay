@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import fail.toepic.beerplay.*
 import fail.toepic.beerplay.adapter.BuyListAdapter
 import fail.toepic.beerplay.connectivity.Repository
-import fail.toepic.beerplay.util.MoveTo
 import kotlinx.android.synthetic.main.fragment_beer_buy.*
 
 class BeerBuyFragment : Fragment() {

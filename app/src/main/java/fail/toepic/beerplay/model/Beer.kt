@@ -13,11 +13,11 @@ data class Beer(val id : String,val name: String = ""){
     val ABV : Float = 0.0F
     // International Bitterness Unit
     @SerializedName("ibu")
-    val IBU : Int = 0
+    val IBU : Float = 0.0F
     @SerializedName("target_fg")
-    val target_final_gravity : Int = 0
+    val target_final_gravity : Float = 0.0F
     @SerializedName("target_og")
-    val target_original_gravity : Int = 0
+    val target_original_gravity : Float = 0.0F
     // color value by European Brewery Convention
     @SerializedName("ebc")
     val EBC : Int = 0

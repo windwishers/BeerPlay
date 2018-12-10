@@ -3,7 +3,6 @@ package fail.toepic.beerplay.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -17,6 +16,8 @@ import fail.toepic.beerplay.adapter.BeerListItem
 import fail.toepic.beerplay.adapter.BeerListAdapter
 import fail.toepic.beerplay.connectivity.Repository
 import fail.toepic.beerplay.model.Beer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_beer_list.*
 import kotlinx.android.synthetic.main.fragment_beer_list.view.*
 
@@ -36,6 +37,8 @@ class BeerListFragment : Fragment(){
 
     val adapter = BeerListAdapter()
 
+    val compositeDisposable : CompositeDisposable = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -51,11 +54,21 @@ class BeerListFragment : Fragment(){
         Log.d("dlwlrma","???? ")
         view.list.adapter =  adapter
 
+        val complite = Repository.instance.loadcomplete
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { it.map { beer -> BeerListItem(beer,0) }}
+                .subscribe {adapter.submitList(it)}
+        compositeDisposable.add(complite)
 
+        Repository.instance.load()
 
-        adapter.submitList(listOf(BeerListItem(Repository.instance.loadBeerDetail("1")!!,1),BeerListItem(Beer("0","name"),0)))
+//        adapter.submitList(listOf(BeerListItem(Repository.instance.loadBeerDetail("1")!!,1),BeerListItem(Beer("0","name"),0)))
+        val onlcik = adapter.onClickSubject.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                doShowDetail(view,it.id)
+            }
 
-
+        compositeDisposable.add(onlcik)
         return view
     }
 
@@ -84,6 +97,7 @@ class BeerListFragment : Fragment(){
         beyUser?.let {
 
             Toast.makeText(requireActivity(),"beer buy by $it",Toast.LENGTH_SHORT).show()
+            arguments?.clear()
 
         }
 
@@ -97,18 +111,8 @@ class BeerListFragment : Fragment(){
         }
     }
 
-
-
-}
-
-private class NumberViewHolder(parentView: View) : RecyclerView.ViewHolder(
-    LayoutInflater.from(parentView.context).inflate(R.layout.two_column_test, null, false)) {
-
-    private val numberView = itemView.findViewById<TextView>(R.id.label)
-
-    fun bindTo(position: Int) {
-        Log.d("dlwlrma","1111111111")
-        numberView.text = "# $position"
-//        numberView.label.text =
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 }
