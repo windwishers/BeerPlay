@@ -38,6 +38,27 @@
 
         <com.google.android.material.card.MaterialCardView style="@style/AppTheme.rect_card">
             <LinearLayout style="@style/AppTheme.linear_in_card" >
+                <include android:id="@+id/method" layout="@layout/two_column"/>
+                <include layout="@layout/line"/>
+                <include android:id="@+id/mash" layout="@layout/two_row"/>
+                <include android:id="@+id/fermentation" layout="@layout/two_row"/>
+                <include android:id="@+id/twist" layout="@layout/two_row"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.rect_card">
+            <LinearLayout style="@style/AppTheme.linear_in_card" >
+                <include android:id="@+id/ingredients" layout="@layout/two_column"/>
+                <include layout="@layout/line"/>
+                <include android:id="@+id/malt" layout="@layout/two_row"/>
+                <include android:id="@+id/hops" layout="@layout/two_row"/>
+                <include android:id="@+id/yeast" layout="@layout/two_row"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.rect_card">
+            <LinearLayout style="@style/AppTheme.linear_in_card" >
                 <include android:id="@+id/food_pairing" layout="@layout/two_row"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -47,7 +68,6 @@
                 <include android:id="@+id/brewers_tips" layout="@layout/two_row"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
 
         <LinearLayout style="@style/AppTheme.linear_in_card" >
             <include android:id="@+id/contributed_by" layout="@layout/two_column_packed_gravity_end"/>

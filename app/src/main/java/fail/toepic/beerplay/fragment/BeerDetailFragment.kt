@@ -21,8 +21,8 @@ import android.text.SpannableStringBuilder
 import android.view.*
 import java.lang.StringBuilder
 import android.view.MenuInflater
-
-
+import fail.toepic.beerplay.model.Ingredients
+import fail.toepic.beerplay.model.Method
 
 
 class BeerDetailFragment : Fragment(){
@@ -132,13 +132,42 @@ class BeerDetailFragment : Fragment(){
 
 //        val method :  Method = Method()
 
-//        val ingredients : Ingredients = Ingredients()
+        setMethod(beer.method)
 
+        setIngredients(beer.ingredients)
 
         setTwoColumnWithList(food_pairing, R.string.food_pairing,beer.food_pairing)
         setTwoColumn(brewers_tips, R.string.brewers_tips, beer.brewers_tips)
         setTwoColumn(contributed_by, R.string.contributed_by, beer.contributed_by)
 
+    }
+
+    private fun setMethod(method: Method) {
+        setTwoColumn(this.method, R.string.method, "")
+        val li = arrayListOf<String>()
+        for (mashTemp in method.mash_temp) {
+            val temp = getValueUnitString(mashTemp.temp).toString().replace(" ","")
+            val string  = "${temp} ${mashTemp.duration}"
+            li.add(string)
+        }
+        setTwoColumnWithList(this.mash, R.string.mash_temp, li)
+        setTwoColumnWithList(this.fermentation, R.string.fermentation, arrayListOf(getValueUnitString(method.fermentation.temp).toString().replace(" ","")))
+        setTwoColumnWithList(this.twist,R.string.twist, arrayListOf(method.twist))
+    }
+
+    private fun setIngredients(ingredients: Ingredients) {
+        setTwoColumn(this.ingredients, R.string.ingredients, "")
+
+        val malts = ingredients.malt.map {
+                it.name + " :  " + getValueUnitString(it.amount).toString().replace(" ","")
+            }
+            setTwoColumnWithList(this.malt, R.string.malt, malts)
+
+        val hops = ingredients.hops.map {
+                it.name + " :  " + getValueUnitString(it.amount).toString().replace(" ","") + " + " + it.add + "(" +it.attribute + ")"
+            }
+            setTwoColumnWithList(this.hops, R.string.hops, hops)
+        setTwoColumnWithList(this.yeast, R.string.yeast, arrayListOf(ingredients.yeast))
     }
 
     private fun setTwoColumnWithList(v: View, labelResId: Int, list: List<String>) {
@@ -147,7 +176,7 @@ class BeerDetailFragment : Fragment(){
         val sb = StringBuilder()
 
         for (food in list) {
-            sb.append(" - ")
+            sb.append(" * ")
             sb.append(food)
             sb.append("\n")
         }
@@ -201,7 +230,13 @@ class BeerDetailFragment : Fragment(){
         v.label.text = getString(label)
 
 
-        val color = ContextCompat.getColor(requireContext(), fail.toepic.beerplay.R.color.colorPrimary)
+        val ssb = getValueUnitString(volume)
+
+        v.text.text = ssb
+    }
+
+    private fun getValueUnitString(volume: ValueUnit): SpannableStringBuilder {
+        val color = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
         val backgroundSpan = ForegroundColorSpan(color)
         val spannableString = SpannableString(volume.unit)
         spannableString.setSpan(backgroundSpan, 0, spannableString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -210,8 +245,7 @@ class BeerDetailFragment : Fragment(){
         ssb.append(volume.value.toString())
         ssb.append("  ")
         ssb.append(spannableString)
-
-        v.text.text = ssb
+        return ssb
     }
 
 }

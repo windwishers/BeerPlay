@@ -18,6 +18,15 @@
     <string name="ph">PH</string>
     <string name="volume">volume</string>
     <string name="boil_volume">boil volume</string>
+    <string name="method">method</string>
+    <string name="mash_temp">mash temperature</string>
+    <string name="fermentation">fermentation</string>
+    <string name="twist">twist</string>
+
+    <string name="ingredients">Ingredients</string>
+    <string name="malt">malt</string>
+    <string name="hops">hops</string>
+    <string name="yeast">yeast</string>
     <string name="food_pairing">food pairing</string>
     <string name="contributed_by">contributed by</string>
     <string name="brewers_tips">brewers tips</string>
