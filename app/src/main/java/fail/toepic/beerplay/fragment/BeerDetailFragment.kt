@@ -1,9 +1,6 @@
 package fail.toepic.beerplay.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
@@ -21,7 +18,11 @@ import androidx.core.content.ContextCompat
 import android.text.SpannableString
 
 import android.text.SpannableStringBuilder
+import android.view.*
 import java.lang.StringBuilder
+import android.view.MenuInflater
+
+
 
 
 class BeerDetailFragment : Fragment(){
@@ -41,6 +42,10 @@ class BeerDetailFragment : Fragment(){
 
     private var beer: Beer? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_beer_detail, container, false)
@@ -79,6 +84,20 @@ class BeerDetailFragment : Fragment(){
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(fail.toepic.beerplay.R.menu.beer_detail_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        item?.let {
+            if (it.itemId == R.id.buy) {
+                doBuy(first_brews,beerID)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun setDetail(beer: Beer) {
         this.beer = beer
