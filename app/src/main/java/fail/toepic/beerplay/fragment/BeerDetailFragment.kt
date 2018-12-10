@@ -21,6 +21,7 @@ import android.text.SpannableStringBuilder
 import android.view.*
 import java.lang.StringBuilder
 import android.view.MenuInflater
+import fail.toepic.beerplay.connectivity.GlideApp
 import fail.toepic.beerplay.model.Ingredients
 import fail.toepic.beerplay.model.Method
 
@@ -101,6 +102,8 @@ class BeerDetailFragment : Fragment(){
 
     private fun setDetail(beer: Beer) {
         this.beer = beer
+
+        GlideApp.with(this).load(beer.image_url).into(img)
 
         changeTitle("${beer.name} - ${beer.id}")
 
