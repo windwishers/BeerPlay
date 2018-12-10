@@ -1,11 +1,13 @@
 package fail.toepic.beerplay.fragment
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -48,6 +50,8 @@ class BeerBuyFragment : Fragment() {
             if(len <= 0){
                 Toast.makeText(requireContext(),getString(R.string.check_name),Toast.LENGTH_SHORT).show()
             }else{
+                val imm = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
+                imm?.hideSoftInputFromWindow(requireActivity().getCurrentFocus()?.getWindowToken(), 0);
                 doBuyConfirm(it,buyer_text.text.toString())
             }
         }
