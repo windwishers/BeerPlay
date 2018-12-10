@@ -10,7 +10,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import fail.toepic.beerplay.MoveFragment
 
 import fail.toepic.beerplay.R
 import fail.toepic.beerplay.TitleChangeable
@@ -105,19 +104,18 @@ class BeerListFragment : Fragment(){
             activity.changeTitle("Bear LIst")
         }
 
-        if ( activity is MoveFragment) {
 
-            val onlcik = adapter.onClickSubject.observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-////                    activity.Move(R.id.action_show_detail,bundleOf(BeerDetailFragment.BEER_ID to it.id))
-//                    doShowDetail(list,it.id)
-//                    Navigation.findNavController(v)
-                    findNavController().navigate(R.id.action_show_detail, bundleOf(BeerDetailFragment.BEER_ID to it.id))
-                }
 
-            compositeDisposable.add(onlcik)
+        val onlcik = adapter.onClickSubject.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
 
-        }
+                findNavController().navigate(R.id.action_show_beer_detail, bundleOf(BeerDetailFragment.BEER_ID to it.id))
+
+            }
+
+        compositeDisposable.add(onlcik)
+//
+
     }
 
     override fun onDestroy() {

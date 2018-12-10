@@ -42,4 +42,5 @@
         <action android:id="@+id/action_buy_confirm" app:destination="@id/beerList"/>
     </fragment>
     <action android:id="@+id/action_move_list" app:destination="@id/beerList"/>
+    <action android:id="@+id/action_show_beer_detail" app:destination="@id/beerDetail"/>
 </navigation>

@@ -13,7 +13,7 @@ import fail.toepic.beerplay.fragment.BeerDetailFragment
 import kotlinx.android.synthetic.main.activity_bear_play.*
 
 
-class BeerPlayActivity : AppCompatActivity() , TitleChangeable,MoveFragment{
+class BeerPlayActivity : AppCompatActivity() , TitleChangeable{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +37,9 @@ class BeerPlayActivity : AppCompatActivity() , TitleChangeable,MoveFragment{
             }
         }
     }
-
-    override fun Move(resid: Int, bunble: Bundle) {
-        NavHostFragment.findNavController(screen).navigate(R.id.action_show_detail, bunble)
-    }
 }
 
 
 interface TitleChangeable{
     fun changeTitle(title : String)
-}
-
-interface MoveFragment{
-    fun Move(resid : Int,bunble : Bundle)
 }
