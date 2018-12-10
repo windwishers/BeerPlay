@@ -3,6 +3,7 @@
     <dimen name="textSize">24sp</dimen>
     <dimen name="margin">16dp</dimen>
     <dimen name="buy_item_height">64dp</dimen>
+    <dimen name="margin_tint">4dp</dimen>
     <dimen name="margin_thin">8dp</dimen>
     <dimen name="textSizeMedium">16sp</dimen>
     <dimen name="label_width">180dp</dimen>
@@ -11,4 +12,6 @@
     <dimen name="row_indent">16dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
     <dimen name="thin_gap">8dp</dimen>
+    <dimen name="item_height">32dp</dimen>
+    <dimen name="beer_list_img_size">80dp</dimen>
 </resources>
