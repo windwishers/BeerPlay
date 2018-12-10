@@ -1,19 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
->
+        android:orientation="vertical">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fragment beer detail"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.card">
+              <LinearLayout style="@style/AppTheme.linear_in_card" >
+                  <include android:id="@+id/first_brews" layout="@layout/two_column_wide"/>
+                  <include android:id="@+id/tags" layout="@layout/two_column_wide"/>
+                  <include android:id="@+id/description" layout="@layout/two_row"/>
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.card">
+            <LinearLayout style="@style/AppTheme.linear_in_card" >
+                <include android:id="@+id/abv" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/og" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/fg" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/attenuation_level" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/ibu" layout="@layout/two_column_wide"/>
+                <View android:layout_height="@dimen/thin_gap" android:layout_width="match_parent" />
+                <View android:id="@+id/color" android:layout_height="24dp" android:layout_width="match_parent" />
+                <include android:id="@+id/ebc" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/srm" layout="@layout/two_column_wide"/>
+                <View android:layout_height="@dimen/thin_gap" android:layout_width="match_parent" />
+                <include android:id="@+id/ph" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/volume" layout="@layout/two_column_wide"/>
+                <include android:id="@+id/boil_volume" layout="@layout/two_column_wide"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.rect_card">
+            <LinearLayout style="@style/AppTheme.linear_in_card" >
+                <include android:id="@+id/food_pairing" layout="@layout/two_row"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView style="@style/AppTheme.rect_card">
+            <LinearLayout style="@style/AppTheme.linear_in_card" >
+                <include android:id="@+id/brewers_tips" layout="@layout/two_row"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <LinearLayout style="@style/AppTheme.linear_in_card" >
+            <include android:id="@+id/contributed_by" layout="@layout/two_column_packed_gravity_end"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

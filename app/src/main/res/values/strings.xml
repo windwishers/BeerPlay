@@ -4,4 +4,23 @@
     <string name="buyer_label">구매자</string>
     <string name="buy_confirm">구매</string>
     <string name="check_name">구매자 이름을 입력 하세요</string>
+    <string name="beer_detail_label">맥주 상세</string>
+    <string name="first_brewed">최초양조일</string>
+    <string name="tagline">테그</string>
+    <string name="description">설명</string>
+    <string name="abv">ABV</string>
+    <string name="final_gravity">final gravity</string>
+    <string name="original_gravity">original gravity</string>
+    <string name="attenuation_level">attenuation level</string>
+    <string name="international_bitterness_unit">IBU</string>
+    <string name="EBC">EBC</string>
+    <string name="SRM">SRM</string>
+    <string name="ph">PH</string>
+    <string name="volume">volume</string>
+    <string name="boil_volume">boil volume</string>
+    <string name="food_pairing">food pairing</string>
+    <string name="contributed_by">contributed by</string>
+    <string name="brewers_tips">brewers tips</string>
+
+
 </resources>

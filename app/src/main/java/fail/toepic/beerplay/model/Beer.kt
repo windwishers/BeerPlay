@@ -9,12 +9,17 @@ data class Beer(val id : String,val name: String = ""){
     val description : String = ""
     val image_url : String = ""
     // Alcohol by Volume
+    @SerializedName("abv")
     val ABV : Float = 0.0F
     // International Bitterness Unit
+    @SerializedName("ibu")
     val IBU : Int = 0
+    @SerializedName("target_fg")
     val target_final_gravity : Int = 0
+    @SerializedName("target_og")
     val target_original_gravity : Int = 0
     // color value by European Brewery Convention
+    @SerializedName("ebc")
     val EBC : Int = 0
     // Sandard Reference Method : 글라스 안에서의 맥주 색.
     val srm : Float = 0.0F
