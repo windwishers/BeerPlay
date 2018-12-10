@@ -36,9 +36,6 @@ class BeerBuyFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        Log.d("dlwlrma","BUY ID : "+buyID)
-
         return inflater.inflate(R.layout.fragment_beer_buy, container, false)
     }
 

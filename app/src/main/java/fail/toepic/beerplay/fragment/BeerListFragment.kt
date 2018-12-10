@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import fail.toepic.beerplay.MoveFragment
 
 import fail.toepic.beerplay.R
 import fail.toepic.beerplay.TitleChangeable
@@ -51,7 +53,6 @@ class BeerListFragment : Fragment(){
 //        }
 
         view.list.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
-        Log.d("dlwlrma","???? ")
         view.list.adapter =  adapter
 
         val complite = Repository.instance.loadcomplete
@@ -63,12 +64,6 @@ class BeerListFragment : Fragment(){
         Repository.instance.load()
 
 //        adapter.submitList(listOf(BeerListItem(Repository.instance.loadBeerDetail("1")!!,1),BeerListItem(Beer("0","name"),0)))
-        val onlcik = adapter.onClickSubject.observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                doShowDetail(view,it.id)
-            }
-
-        compositeDisposable.add(onlcik)
         return view
     }
 
@@ -108,6 +103,20 @@ class BeerListFragment : Fragment(){
         val activity = requireActivity()
         if ( activity is TitleChangeable) {
             activity.changeTitle("Bear LIst")
+        }
+
+        if ( activity is MoveFragment) {
+
+            val onlcik = adapter.onClickSubject.observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+////                    activity.Move(R.id.action_show_detail,bundleOf(BeerDetailFragment.BEER_ID to it.id))
+//                    doShowDetail(list,it.id)
+//                    Navigation.findNavController(v)
+                    findNavController().navigate(R.id.action_show_detail, bundleOf(BeerDetailFragment.BEER_ID to it.id))
+                }
+
+            compositeDisposable.add(onlcik)
+
         }
     }
 

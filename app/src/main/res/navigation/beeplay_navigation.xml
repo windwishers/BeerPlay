@@ -20,7 +20,7 @@
                 app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim"
-                app:launchSingleTop="true"/>
+                />
     </fragment>
 
 
@@ -30,7 +30,7 @@
             android:label="fragment_beer_detail"
             tools:layout="@layout/fragment_beer_detail">
         <argument android:name="beer_id" app:argType="string" android:defaultValue=''/>
-        <action android:id="@+id/action_beer_buy" app:destination="@id/buy_confirm" app:launchSingleTop="true"/>
+        <action android:id="@+id/action_beer_buy" app:destination="@id/buy_confirm"/>
     </fragment>
 
     <fragment
@@ -39,6 +39,7 @@
             android:label="fragment_beer_detail"
             tools:layout="@layout/fragment_beer_buy">
         <argument android:name="buy_id" app:argType="string" android:defaultValue=''/>
-        <action android:id="@+id/action_buy_confirm" app:destination="@id/beerList" app:launchSingleTop="true"/>
+        <action android:id="@+id/action_buy_confirm" app:destination="@id/beerList"/>
     </fragment>
+    <action android:id="@+id/action_move_list" app:destination="@id/beerList"/>
 </navigation>

@@ -33,7 +33,6 @@ class Repository private constructor() {
                 storeDetail(li)
                 loadcomplete.onNext(li)
             },{e ->
-                Log.d("dlwlrma"," "+e.localizedMessage)
             }
             )
     }
